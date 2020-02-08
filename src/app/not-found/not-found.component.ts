@@ -13,5 +13,7 @@ export class NotFoundComponent implements OnInit {
     private sharedService: SharedService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.titleService.setTitle(`${this.sharedService.blogTitle}`)
+  }
 }
