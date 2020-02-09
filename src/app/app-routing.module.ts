@@ -7,8 +7,8 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: "dashbord", component: DashboardComponent },
   { path: "articles", component: ArticleListComponent },
+  { path: "dashboard", component: DashboardComponent },
   { path: "about", component: AboutComponent },
   { path: "404", component: NotFoundComponent },
   { path: "", component: ArticleListComponent },
