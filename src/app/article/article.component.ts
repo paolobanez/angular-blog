@@ -26,10 +26,11 @@ export class ArticleComponent implements OnInit {
     this.route.params.subscribe(params => {
       const key = params.key;
       this.articleService.getArticle(key).subscribe(article => {
-        if (article === undefined) {
+        if (article === null) {
           this.router.navigateByUrl("404");
           return;
         }
+
         this.article = article;
         this.titleService.setTitle(
           `${this.article.title} - ${this.sharedService.blogTitle}`
