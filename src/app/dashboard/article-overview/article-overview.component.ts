@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/article';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-article-overview',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-overview.component.scss']
 })
 export class ArticleOverviewComponent implements OnInit {
+  articles: Article[];
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.getArticles();
+  }
+
+  getArticles(): void {
+    this.dashboardService.getArticles().subscribe(articles => this.articles = articles);
   }
 
 }
