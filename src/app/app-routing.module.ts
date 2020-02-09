@@ -4,8 +4,10 @@ import { ArticleListComponent } from "./article-list/article-list.component";
 import { AboutComponent } from "./about/about.component";
 import { ArticleComponent } from "./article/article.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: "dashbord", component: DashboardComponent },
   { path: "articles", component: ArticleListComponent },
   { path: "about", component: AboutComponent },
   { path: "404", component: NotFoundComponent },
@@ -18,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
