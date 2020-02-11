@@ -1,1 +1,37 @@
-<p>edit-article works!</p>
+<div class="wrapper" *ngIf="article">
+  <div class="property">
+    <label for="">Title:</label>
+    <input type="text" [(ngModel)]="article.title" />
+  </div>
+  <div class="property">
+    <label for="">Key:</label>
+    <input type="text" [(ngModel)]="article.key" />
+  </div>
+  <div class="property">
+    <label for="">Date:</label>
+    <input type="text" [(ngModel)]="article.date" />
+  </div>
+  <div class="property">
+    <label for="">Image URL:</label>
+    <input type="text" [(ngModel)]="article.imageUrl" />
+  </div>
+  <div class="property">
+    <label for="">Description:</label>
+    <textarea
+      type="text"
+      [(ngModel)]="article.description"
+      class="description"
+    ></textarea>
+  </div>
+  <div class="property">
+    <label for="">Content:</label>
+    <textarea type="text" [(ngModel)]="article.content"></textarea>
+  </div>
+
+  <div>
+    <button (click)="updateArticle()">Update</button>
+    <div *ngIf="saved" class="alert">
+      Saved. <a routerLink="../../{{ article.key }}">View article.</a>
+    </div>
+  </div>
+</div>
