@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵCodegenComponentFactoryResolver } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Article } from '../article';
@@ -25,5 +25,9 @@ export class DashboardService {
 
   updateArticle(article: Article): Observable<Article> {
     return this.http.put<Article>(environment.apiUrl + '/api/dashboard/article', article);
+  }
+
+  deleteArticle(id: number): Observable<any> {
+    return this.http.delete<any>(environment.apiUrl + "/api/dashboard/article/" + id);
   }
 }
