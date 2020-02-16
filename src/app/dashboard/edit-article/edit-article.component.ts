@@ -11,13 +11,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditArticleComponent implements OnInit {
   article: Article = null;
   saved: boolean = false;
+  isNew: boolean = false;
 
   constructor(private dashboardService: DashboardService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const key: string = params.key;
-      this.getArticle(key);
+
+      if (key !== "new") {
+        this.getArticle(key);
+      } else {
+        this.article = new Article();
+        this.article.published = false;
+        this.isNew = true;
+      }
     });
   }
 
@@ -55,6 +63,15 @@ export class EditArticleComponent implements OnInit {
         this.router.navigateByUrl("dashboard");
       }, error => alert(error.error.message));
     }
+  }
+
+  createArticle(): void {
+    this.saved = false;
+    this.dashboardService.createArticle(this.article).subscribe(result => {
+      this.article = result;
+      this.saved = true;
+      this.isNew = false;
+    });
   }
 
 }
