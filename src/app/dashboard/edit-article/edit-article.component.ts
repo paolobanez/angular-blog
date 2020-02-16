@@ -41,4 +41,8 @@ export class EditArticleComponent implements OnInit {
     })
   }
 
+  viewPreview(): void {
+    this.router.navigateByUrl("/dashboard/preview/" + this.article.key);
+  }
+
 }
